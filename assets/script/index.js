@@ -47,26 +47,18 @@ function getLanguage() {
     return lang;
 }
 function getBrowser() {
-    let userAgent = navigator.userAgent;
-    console.log(userAgent);
-    let browserName = 'Unidentified';
-    const browsers = ['Edge', 'OPR', 'Chrome', 'Firefox', 'Safari'];
-    if(userAgent.includes(browsers[0]) || userAgent.includes('Edg')) {
-        browserName = 'Edge';
-    }
-    else if(userAgent.includes(browsers[1])) {
-        browserName = 'Opera';
-    }
-    else if(userAgent.includes(browsers[2])) {
-        browserName = 'Chrome';
-    }
-    else if(userAgent.includes(browsers[3])) {
-        browserName = 'Firefox';
-    }
-    else if(userAgent.includes(browsers[4])) {
-        browserName = 'Safari';
-    }
-    return browserName;
+    const userAgent = navigator.userAgent;
+    const browserMapping = {
+        'Edge': 'Edge',
+        'Edg': 'Edge',
+        'OPR': 'Opera',
+        'Chrome': 'Chrome',
+        'Firefox': 'Firefox',
+        'Safari': 'Safari'
+    };
+    
+    let browserName = Object.keys(browserMapping).find(key => userAgent.includes(key)) || 'Unidentified';
+    return browserMapping[browserName];
 }
 const setInnerText = () => {
     operatingSystem.innerText = getOperatingSystem();
