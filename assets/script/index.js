@@ -30,8 +30,8 @@ const browser = select('.browser');
 
 //Start of SYSTEM
 function getOperatingSystem() {
-    let plat = navigator.platform.toLowerCase();
-    let os = navigator.platform;
+    let plat = navigator.userAgent.toLowerCase();
+    let os = navigator.userAgent;
     const systems = ['win', 'mac', 'linux', 'android', 'iphone'];
     const name = ['Windows', 'Mac', 'Linux', 'Android', 'IOS'];
     for(let i = 0; i < systems.length; i++) {
